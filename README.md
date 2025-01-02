@@ -1,6 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Consmo_VueJS
 =======
+=======
+>>>>>>> 1e40f41a19a65197a8030764ca50d51c640193de
 # pruebafinal
 
 This template should help get you started developing with Vue 3 in Vite.
@@ -36,4 +39,7 @@ npm run build
 ```sh
 npm run test:unit
 ```
+<<<<<<< HEAD
 >>>>>>> 1e40f41 (Subida inicial del proyecto Vue.js)
+=======
+>>>>>>> 1e40f41a19a65197a8030764ca50d51c640193de
