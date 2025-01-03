@@ -1,6 +1,45 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from '@/components/HelloWorld.vue'
+import HelloWorld from '@/components/HelloWorld.vue';
+
+$(document).ready(function(){
+    $(".owl-carousel").owlCarousel({
+        items: 1, // Número de elementos por vista
+        loop: true, // Repetir el carrusel automáticamente
+        autoplay: true, // Habilitar el autoplay
+        autoplayTimeout: 5000, // Duración de cada diapositiva en milisegundos (5 segundos en este caso)
+        autoplayHoverPause: true // Pausar el autoplay cuando el mouse pasa sobre el carrusel
+    });
+
+    const swiper = new Swiper('.swiper-container', {
+slidesPerView: 4,
+spaceBetween: 20,
+navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+},
+pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+},
+autoplay: {
+    delay: 3000, // Ajusta el tiempo de retardo según lo necesites
+    disableOnInteraction: false, // Esto permite que la reproducción automática no se detenga tras la interacción
+},
+observer: true,
+observeParents: true,
+});
+setInterval(() => {
+const paginationBullet = document.getElementById('button-next');
+if (paginationBullet) {
+    paginationBullet.click();
+    console.log('Clic simulado en el botón Next');
+} else {
+    console.log('No se encontró el botón con id "button-next"');
+}
+}, 5000);
+
+});
 </script>
 
 <template>

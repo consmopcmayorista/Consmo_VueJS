@@ -112,20 +112,21 @@
                         </div>
                     </div>
                     <div class="pagination_container">
- <!-- <div class="pagination_wrp collapsed">
-    <template v-for="index in cant_pagina">
-      <div class="single_paginat" :class="{ active: index === pagina }" :key="index" @click="paginar(index)">
+                        <div class="pagination_container">
+  <div class="pagination_wrp collapsed">
+    <template v-for="index in cant_pagina" :key="index">
+      <div class="single_paginat" :class="{ active: index === pagina }" @click="paginar(index)">
         {{ index }}
       </div>
     </template>
-  </div> -->
-
+  </div>
 
   </div>
 
   <!-- Botón para expandir o colapsar la paginación -->
   <button class="toggle_button" onclick="togglePagination()">Ver más</button>
 </div>
+                </div>
 
 
                 </div>
@@ -165,6 +166,8 @@
                    
                 </div>
                 </div>
+
+                
             </div>
             </div>
         </div>
@@ -174,6 +177,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'ShopList',
   mounted() {
@@ -182,8 +187,6 @@ export default {
   methods: {
     loadExternalScripts() {
       const scripts = [
-        'https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js',
-        'https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js',
         '/js/app.js?v=0.4.71',
         '/js/components/tarjeta_contacto.js?v=0.0.50',
         '/assets/js/bootstrap.bundle.min.js',
@@ -193,7 +196,7 @@ export default {
         '/assets/js/jquery.nice-select.min.js',
         '/assets/js/app.js?v=0.1.27',
         '/assets/js/main.js?v=0.1.67',
-        '/js/script.js'
+        '/js/script.js',
       ];
 
       scripts.forEach(src => {
@@ -202,10 +205,16 @@ export default {
         script.async = true;
         document.body.appendChild(script);
       });
+    },
+    fetchData() {
+      axios.get('/api/data').then(response => {
+        console.log(response.data);
+      });
     }
   }
-}
+};
 </script>
+
 
 
 <style>

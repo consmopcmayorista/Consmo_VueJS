@@ -1,8 +1,27 @@
 <script setup>
+import { ref, onMounted } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import WelcomeItem from './components/WelcomeItem.vue'
-import FooterInteractivo from "./components/footer.vue";
+import FooterInteractivo from "./components/footer.vue"
+
+const toggleButton = ref(null)
+const whatsappButtons = ref(null)
+
+onMounted(() => {
+  toggleButton.value = document.getElementById('toggle-whatsapp-btn')
+  whatsappButtons.value = document.getElementById('whatsapp-buttons')
+
+  if (toggleButton.value && whatsappButtons.value) {
+    toggleButton.value.addEventListener('click', function() {
+      if (whatsappButtons.value.style.display === 'none' || whatsappButtons.value.style.display === '') {
+        whatsappButtons.value.style.display = 'block'
+      } else {
+        whatsappButtons.value.style.display = 'none'
+      }
+    })
+  }
+})
 </script>
 
 
@@ -280,10 +299,15 @@ import FooterInteractivo from "./components/footer.vue";
             </h5>
 
             <!-- single categories  -->
-            <!-- <a class="singlecats" :href="'shop-list.html?Pag=' + index + '&criterio=categoria'"   v-for="(dato, index) of repetidos_categorias" v-if="dato.cat_padre==='0'">
-                
-                <span class="txt">{{index}}</span>
-            </a>-->
+    <!-- single categories -->
+    <template v-for="(dato, index) in repetidos_categorias" :key="index">
+    <a v-if="dato.cat_padre === '0'" 
+        class="singlecats" 
+        :href="'shop-list.html?Pag=' + dato.categoria + '&criterio=categoria'">
+        <span class="txt">{{ dato.categoria }}</span>
+    </a>
+    </template>
+    
             
           </div>
     </div>   

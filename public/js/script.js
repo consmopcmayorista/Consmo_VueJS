@@ -1,45 +1,5 @@
-/// Preloader
-window.addEventListener("load", () => {
-  const preloader = document.querySelector(".preloader");
-
-  // Tiempo mínimo de espera (2 segundos)
-  setTimeout(() => {
-    preloader.style.transition = "opacity 0.5s ease";
-    preloader.style.opacity = "0";
-
-    setTimeout(() => {
-      preloader.style.display = "none";
-    }, 500);
-  }, 2300);
-
-  // Tiempo máximo de espera (5 segundos)
-  setTimeout(() => {
-    preloader.style.transition = "opacity 0.5s ease";
-    preloader.style.opacity = "0";
-
-    setTimeout(() => {
-      preloader.style.display = "none";
-    }, 500);
-  }, 4300);  // Cambia 5000 por el tiempo límite que consideres adecuado
-});
 
 
-// Obtener el botón que controla la visibilidad
-const toggleButton = document.getElementById('toggle-whatsapp-btn');
-// Obtener el contenedor de los botones de WhatsApp
-const whatsappButtons = document.getElementById('whatsapp-buttons');
-
-// Añadir un evento de clic al botón de mostrar/ocultar
-toggleButton.addEventListener('click', function() {
-  // Verificar si los botones de WhatsApp están visibles o no
-  if (whatsappButtons.style.display === 'none' || whatsappButtons.style.display === '') {
-    // Si están ocultos, mostrarlos
-    whatsappButtons.style.display = 'block';
-  } else {
-    // Si están visibles, ocultarlos
-    whatsappButtons.style.display = 'none';
-  }
-});
 
 function togglePagination() {
   const paginationWrapper = document.querySelector(".pagination_wrp");
