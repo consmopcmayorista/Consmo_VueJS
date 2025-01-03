@@ -1,5 +1,4 @@
 import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
@@ -15,4 +14,12 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  optimizeDeps: {
+    include: ['@vue-leaflet/vue-leaflet', 'leaflet']
+  },
+  build: {
+    commonjsOptions: {
+      include: [/@vue-leaflet\/vue-leaflet/, /node_modules/]
+    }
+  }
 })

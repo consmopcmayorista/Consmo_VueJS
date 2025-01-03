@@ -110,7 +110,7 @@
            
             <picture>
                 <source media="(min-width: 768px)" srcset="/images2/banner_sedes.jpg">
-                <img loading="lazy8"  class="w-100" src="/images2/banner_sedes.jpg" alt="ad">
+                <img loading="lazy"  class="w-100" src="/images2/banner_sedes.jpg" alt="ad">
             </picture>
         </a>
     </div>

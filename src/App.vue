@@ -159,6 +159,9 @@ onMounted(() => {
                 <li class="withsubs">
                     <a href="/conocenos">Conocenos <span><i></i></span></a>
                 </li>
+                <li class="withsubs">
+                    <a href="/encuentranos">Encuentranos <span><i></i></span></a>
+                </li>
             </ul>
         </div>
     </div>
