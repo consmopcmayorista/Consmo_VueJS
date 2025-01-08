@@ -30,6 +30,12 @@ const branches = ref([
 </script>
 
 <template>
+    <!-- Banner -->
+    <div class="banner">
+    <img src="/images2/banner_encuentranos.png" alt="Encuéntranos Banner" class="banner-image">
+    <div class="banner-content">
+    </div>
+  </div>
   <div>
     <!-- Título principal -->
     <h1 style="text-align: center; margin-bottom: 1rem; font-size: 2.5rem; color: #333;">Encuéntranos</h1>
@@ -109,5 +115,38 @@ const branches = ref([
 /* Efecto opcional en el contenedor */
 div:hover {
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+/* Estilos para el banner */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.banner-content h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.banner-content p {
+  font-size: 1.5rem;
 }
 </style>
