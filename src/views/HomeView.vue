@@ -1,7 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from '@/components/HelloWorld.vue';
-import CommentSection from '@/components/CommentSection.vue';
 
 $(document).ready(function(){
     $(".owl-carousel").owlCarousel({
@@ -206,7 +205,7 @@ if (paginationBullet) {
         </div>
     </div>
 
-    <CommentSection />
+
 
     
     <section class="features_area  section_padding">

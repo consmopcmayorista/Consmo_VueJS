@@ -50,6 +50,13 @@ const router = createRouter({
         name: 'encuentranos',
           component: () => import('../views/Encuentranos.vue'),
         },
+        {
+        path: '/calificanos',
+        name: 'calificanos',
+          component: () => import('../views/Rating.vue'),
+          props: true,  // allows passing props to the component
+          
+        }
   ],
 })
 
