@@ -9,6 +9,12 @@
     </div>
 
     <!-- cart area -->
+    <div class="text-center my-4">
+  <h2 class="mb-3">¿Quieres saber el costo de tu envío?</h2>
+  <router-link to="/envios" class="btn btn-primary btn-lg animate__animated animate__pulse animate__infinite">
+    <i class="las la-map-marker"></i> Descubre el costo de tu domicilio en nuestro mapa interactivo
+  </router-link>
+</div>
     <div class="cart_area section_padding_b">
         <div class="container">
             <div class="row">

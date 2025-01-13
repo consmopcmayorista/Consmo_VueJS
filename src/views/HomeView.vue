@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from '@/components/HelloWorld.vue';
+import CommentSection from '@/components/CommentSection.vue';
 
 $(document).ready(function(){
     $(".owl-carousel").owlCarousel({
@@ -85,43 +86,48 @@ if (paginationBullet) {
 
 
             <!-- offer deal -->
-    <div class="offer_wrp section_padding_b">
-        <div class="container">
-            <div class="row">
-                <!-- single offer  -->
-                <div class="col-sm-6">
-                    <div class="single_offercard">
-                        <div class="offertext">
-                            <h3 class="offer_pers">Mercado Libre</h3>
-                            <h4>Estamos en Mercado Libre</h4>
-                            <p>Dale un vistazo a nuestro catálogo!!</p>
-                            <a href="https://listado.mercadolibre.com.co/_CustId_292963841?item_id=MCO1462121303&category_id=MCO113155&seller_id=292963841&client=recoview-selleritems&recos_listing=true#origin=vip&component=sellerData&typeSeller=classic" class="default_btn rounded xs_btn">Consmo PC</a>
+<!-- offer deal -->
+<div class="offer_wrp section_padding_b">
+    <div class="container">
+        <div class="row">
+            <!-- single offer  -->
+            <div class="col-md-6 mb-4 mb-md-0">
+                <div class="single_offercard h-100">
+                    <div class="offertext">
+                        <h3 class="offer_pers">Mercado Libre</h3>
+                        <h4>Estamos en Mercado Libre</h4>
+                        <p>Dale un vistazo a nuestro catálogo!!</p>
+                        <div class="d-flex flex-column flex-md-row">
+                            <a href="https://listado.mercadolibre.com.co/_CustId_292963841?item_id=MCO1462121303&category_id=MCO113155&seller_id=292963841&client=recoview-selleritems&recos_listing=true#origin=vip&component=sellerData&typeSeller=classic" class="default_btn rounded xs_btn mb-2 mb-md-0 me-md-2">Consmo PC</a>
                             <a href="https://listado.mercadolibre.com.co/_CustId_1659542107?item_id=MCO1432984737&category_id=MCO54154&seller_id=1659542107&client=recoview-selleritems&recos_listing=true#origin=vip&component=sellerData&typeSeller=classic" class="default_btn rounded xs_btn">WORLDTECHCOL</a>
                         </div>
-                        <div class="offerimg">
-                            <img loading="lazy8"  src="/assets/images/aliado.png" alt="product">
-                        </div>
+                    </div>
+                    <div class="offerimg">
+                        <img loading="lazy" src="/assets/images/aliado.png" alt="product">
                     </div>
                 </div>
-                <!-- single offer  -->
-                <div class="col-sm-6 mt-3 mt-sm-0">
-                    <div class="single_offercard bg_2">
-                        <div class="offertext">
-                            <h3 class="offer_pers">Comunidad Difusiones WhatsApp</h3>
-                            <h4>Productos nuevos y promociones</h4>
-                            <p>Publicaciones diarias, ¿qué esperas?</p>
-                            <a href="https://chat.whatsapp.com/CCgnqRsRHNh5bQDIazc2DF" class="default_btn rounded xs_btn">Suramericana</a>
-                            <a href="https://chat.whatsapp.com/EoiWvYD6jzTGFtDuk8gZON" class="default_btn rounded xs_btn">Minorista</a>
+            </div>
+            <!-- single offer  -->
+            <div class="col-md-6">
+                <div class="single_offercard bg_2 h-100">
+                    <div class="offertext">
+                        <h3 class="offer_pers">Comunidad Difusiones WhatsApp</h3>
+                        <h4>Productos nuevos y promociones</h4>
+                        <p>Publicaciones diarias, ¿qué esperas?</p>
+                        <div class="d-flex flex-column flex-md-row">
+                            <a href="https://chat.whatsapp.com/CCgnqRsRHNh5bQDIazc2DF" class="default_btn rounded xs_btn mb-2 mb-md-0 me-md-2">Suramericana</a>
+                            <a href="https://chat.whatsapp.com/EoiWvYD6jzTGFtDuk8gZON" class="default_btn rounded xs_btn mb-2 mb-md-0 me-md-2">Minorista</a>
                             <a href="https://chat.whatsapp.com/DPm4UI5L6PHA2G4e0Z0pgy" class="default_btn rounded xs_btn">Monteria</a>
                         </div>
-                        <div class="offerimg">
-                            <img loading="lazy8"  src="/assets/images/difusiones.png" alt="product">
-                        </div>
+                    </div>
+                    <div class="offerimg">
+                        <img loading="lazy" src="/assets/images/difusiones.png" alt="product">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
         <!-- ad banner -->
         <div class="ad_banner_area section_padding_b">
@@ -199,6 +205,10 @@ if (paginationBullet) {
             </div>
         </div>
     </div>
+
+    <CommentSection />
+
+    
     <section class="features_area  section_padding">
         <div class="container">
             <div class="row justify-content-center">

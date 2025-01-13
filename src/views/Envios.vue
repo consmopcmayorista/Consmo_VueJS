@@ -1,13 +1,22 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import { LMap, LTileLayer, LPolygon, LTooltip } from "@vue-leaflet/vue-leaflet";
-import "leaflet/dist/leaflet.css";
+import { LMap, LTileLayer, LPolygon, LTooltip } from '@vue-leaflet/vue-leaflet';
+import 'leaflet/dist/leaflet.css';
 
-const mapReady = ref(false);
-const zoom = ref(12);
-const center = ref([6.2442, -75.5812]); // Coordenadas de Medellín
+const mapReadyMedellin = ref(false);
+const mapReadyMonteria = ref(false);
+const showPricesMedellin = ref(true);
+const showPricesMonteria = ref(true);
+const isExpandedMedellin = ref(false);
+const isExpandedMonteria = ref(false);
 
-const comunas = ref([
+const zoomMedellin = ref(11);
+const centerMedellin = ref([6.244203, -75.581212]);
+
+const zoomMonteria = ref(12);
+const centerMonteria = ref([8.7489, -75.8814]);
+
+const comunasMedellin = ref([
   {
     nombre: "Popular",
     coordenadas: [
@@ -560,7 +569,7 @@ const comunas = ref([
     [6.187369642880711, -75.64720157528795]
   ],
   "color": "#FFD700", 
-  "precioDomicilio": 11000
+  "precioDomicilio": 13000
 },
 {
   "nombre": "San Cristóbal",
@@ -578,59 +587,298 @@ const comunas = ref([
     [6.2753663992415625, -75.62132620725924]
   ],
   "color": "#4c9cff", 
-  "precioDomicilio": 11000
+  "precioDomicilio": 13000
 }
 
 ]);
 
-const showPrices = ref(true);
-const isExpanded = ref(false);
+const comunasMonteria = ref([
+  // Agrega aquí los datos de las comunas de Montería
+  // Por ejemplo:
+  {
+  "nombre": "Polígono 1",
+  "coordenadas": [
+    [8.771326997410753, -75.87617080593859],
+    [8.76938199162079, -75.87406464968889],
+    [8.768743750897485, -75.87228872960813],
+    [8.769647925415583, -75.87051279248531],
+    [8.771669017749147, -75.87045896023945],
+    [8.775657991293087, -75.87175054402404],
+    [8.782306174427362, -75.87417228900985],
+    [8.783848586592342, -75.88009198879244],
+    [8.782731684686183, -75.88800298209503],
+    [8.773328826901036, -75.89918186817371],
+    [8.766840024001695, -75.90644703907458],
+    [8.755138603486245, -75.9171564728226],
+    [8.749926031367082, -75.91500382246863],
+    [8.744181486934849, -75.91059088817934],
+    [8.744053187103574, -75.90598733881052],
+    [8.747792734656201, -75.90422863842524],
+    [8.750001815810137, -75.90201709979338],
+    [8.750094828627653, -75.89959381606347],
+    [8.749327472186053, -75.89717053233419],
+    [8.748350834428507, -75.89486488373659],
+    [8.748234567807089, -75.892959194566],
+    [8.749046916472835, -75.89270585733529],
+    [8.753092923194771, -75.8924932743496],
+    [8.755355436363033, -75.89174752949326],
+    [8.758138129867234, -75.88967512396543],
+    [8.759241670139602, -75.88808013217316],
+    [8.765862311521474, -75.88483706496442],
+    [8.768279292494398, -75.88372065374192],
+    [8.771747241177565, -75.88223192950859],
+    [8.77258799837361, -75.8809559003696],
+    [8.77248301513869, -75.87776576999686],
+    [8.771326997410753, -75.87617080593859]
+  ],
+  "color": "#4c9cff", 
+  "precioDomicilio": 7000
+},
+{
+  "nombre": "Polígono 2",
+  "coordenadas": [
+    [8.760088649820503, -75.86772006106969],
+    [8.757347072490688, -75.87185105232912],
+    [8.754897369420846, -75.8691956814063],
+    [8.749239165488632, -75.8686644986648],
+    [8.746439576003624, -75.87273631635433],
+    [8.742706496754465, -75.8748608468052],
+    [8.743464868054659, -75.87067066338572],
+    [8.738097748769917, -75.85467708259795],
+    [8.748131018362415, -75.85396900852483],
+    [8.75390571715063, -75.85591661526713],
+    [8.754780665673735, -75.85697889254885],
+    [8.760088649820503, -75.86772006106969]
+  ],
+  "color": "#FFCB00", 
+  "precioDomicilio": 6000
+},
+{
+  "nombre": "Polígono 3",
+  "coordenadas": [
+    [8.7669243019254, -75.87230981215167],
+    [8.764357846738818, -75.87171963175734],
+    [8.760332811299861, -75.86764751819382],
+    [8.75473284883843, -75.85696473488834],
+    [8.7669243019254, -75.85224252690914],
+    [8.776082608343387, -75.84816987593832],
+    [8.778299266387876, -75.84628128412442],
+    [8.790198833660455, -75.84870106528948],
+    [8.795798164188156, -75.86198142334133],
+    [8.789265027548169, -75.86634876375588],
+    [8.785007301772538, -75.87189692271836],
+    [8.782207592003104, -75.87278169092015],
+    [8.777833066992287, -75.87095220049319],
+    [8.772875140370502, -75.86918170437833],
+    [8.769032260128611, -75.8693724453751],
+    [8.76734078061277, -75.87031665067809],
+    [8.7669243019254, -75.87230981215167]
+  ],
+  "color": "#9929ea",
+  "precioDomicilio": 6000
+},
+{
+  "nombre": "Polígono 4",
+  "coordenadas": [
+    [8.735883040252574, -75.88369357524363],
+    [8.73593558476459, -75.88215243996173],
+    [8.73178601727139, -75.87811357198832],
+    [8.728529336753638, -75.87630670801171],
+    [8.72149039778229, -75.87667853986501],
+    [8.71933662928781, -75.87503103390488],
+    [8.719073912773908, -75.86945082048348],
+    [8.726375639557517, -75.85876912637704],
+    [8.734622513924421, -75.85212638477161],
+    [8.738141809550157, -75.85520875603034],
+    [8.739822603954337, -75.85892887117585],
+    [8.741976079485696, -75.86647518828028],
+    [8.743341537920472, -75.87072652782737],
+    [8.742606265725541, -75.87503103584233],
+    [8.740452790250657, -75.87598762412374],
+    [8.737353830178492, -75.87970763503179],
+    [8.735883040252574, -75.88369357524363]
+  ],
+  "color": "#cdfb00",
+  "precioDomicilio": 7000
+},
+{
+  "nombre": "Polígono 5",
+  "coordenadas": [
+    [8.747806861221193, -75.90152208272933],
+    [8.746493169402484, -75.90364904630952],
+    [8.741413783672641, -75.90169992244869],
+    [8.736247602464601, -75.91055872007485],
+    [8.73870530388534, -75.91729418168563],
+    [8.735902451627652, -75.92083758905038],
+    [8.728020241650967, -75.922517537434],
+    [8.723646842988828, -75.921155559111],
+    [8.722772579517866, -75.90823005337266],
+    [8.721976241875552, -75.89079969860468],
+    [8.71426699924649, -75.88964792825462],
+    [8.715405078830486, -75.88388731257949],
+    [8.717419924290311, -75.88105121405039],
+    [8.7214496748243, -75.87670844030967],
+    [8.728370352284813, -75.87617778413103],
+    [8.73152349813391, -75.87812793066091],
+    [8.73581502794535, -75.88229279324035],
+    [8.735376052258786, -75.88867235863059],
+    [8.740806166386406, -75.89691259695257],
+    [8.747806861221193, -75.90152208272933]
+  ],
+  "color": "#00fb63",
+  "precioDomicilio": 7000
+},
+{
+  "nombre": "Polígono 6",
+  "coordenadas": [
+    [8.760242829193373, -75.86776337585266],
+    [8.76426936051027, -75.87175194475846],
+    [8.766896136232859, -75.8725493595024],
+    [8.771012333803299, -75.87813102023483],
+    [8.7699617694945, -75.88185231733507],
+    [8.764356792365561, -75.88273800214182],
+    [8.760065977670891, -75.88566142505962],
+    [8.75297355403211, -75.89026944656335],
+    [8.747019262418561, -75.89248307822726],
+    [8.745530960348333, -75.894342858157],
+    [8.747982187165377, -75.89886311901142],
+    [8.748069556721205, -75.90161079547482],
+    [8.740625878853223, -75.89664899660498],
+    [8.73651073308109, -75.89044610629301],
+    [8.735548097214718, -75.88858511529665],
+    [8.735459400569084, -75.88477605738944],
+    [8.737471752413029, -75.87990337096616],
+    [8.740537539161608, -75.87618172567916],
+    [8.743953723989137, -75.8742325445196],
+    [8.746581073635241, -75.87272645175159],
+    [8.749207325192813, -75.86864880700203],
+    [8.754725509875172, -75.86909168400194],
+    [8.757352388829062, -75.87183991516002],
+    [8.760242829193373, -75.86776337585266]
+  ],
+  "color": "#3100fb",
+  "precioDomicilio": 5000
+},
+
+
+
+  // ... Agrega más comunas de Montería aquí
+]);
 
 onMounted(() => {
-  mapReady.value = true;
+  mapReadyMedellin.value = true;
+  mapReadyMonteria.value = true;
 });
 
-const togglePrices = () => {
-  showPrices.value = !showPrices.value;
+const togglePricesMedellin = () => {
+  showPricesMedellin.value = !showPricesMedellin.value;
 };
 
-const toggleExpand = () => {
-  isExpanded.value = !isExpanded.value;
+const togglePricesMonteria = () => {
+  showPricesMonteria.value = !showPricesMonteria.value;
+};
+
+const toggleExpandMedellin = () => {
+  isExpandedMedellin.value = !isExpandedMedellin.value;
+};
+
+const toggleExpandMonteria = () => {
+  isExpandedMonteria.value = !isExpandedMonteria.value;
 };
 </script>
 
 <template>
-  <h6>Envios Medellin y sus alrededores</h6>
-  <div class="map-container" :class="{ 'expanded': isExpanded }">
-    <div class="map-controls">
-      <button @click="togglePrices">{{ showPrices ? 'Ocultar precios' : 'Mostrar precios' }}</button>
-      <button @click="toggleExpand">{{ isExpanded ? 'Contraer mapa' : 'Expandir mapa' }}</button>
-    </div>
-    <div class="map-wrapper">
-      <l-map v-if="mapReady" :zoom="zoom" :center="center">
-        <l-tile-layer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          layer-type="base"
-          name="OpenStreetMap"
-        ></l-tile-layer>
-        
-        <l-polygon 
-          v-for="comuna in comunas"
-          :key="comuna.nombre"
-          :lat-lngs="comuna.coordenadas"
-          :color="comuna.color"
-          :fill-color="comuna.color"
-          :fill-opacity="0.3"
-          :weight="2"
-        >
-          <l-tooltip :options="{ permanent: true, direction: 'center' }" v-if="showPrices">
-            <div>
-              <strong>{{ comuna.nombre }}</strong><br>
-              ${{ comuna.precioDomicilio.toLocaleString() }}
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Mapas de Envíos</h1>
+    <p class="text-center mb-5">
+      Si su lugar de residencia está fuera de los polígonos establecidos, al momento de hacer su compra, 
+      un asesor se contactará con usted inmediatamente para brindarle asesoría sobre los envíos.
+    </p>
+    
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Envíos Medellín y sus alrededores</h5>
+          </div>
+          <div class="card-body">
+            <div class="map-container" :class="{ 'expanded': isExpandedMedellin }">
+              <div class="map-controls mb-2">
+                <button class="btn btn-sm btn-outline-primary mr-2" @click="togglePricesMedellin">
+                  {{ showPricesMedellin ? 'Ocultar precios' : 'Mostrar precios' }}
+                </button>
+                <button class="btn btn-sm btn-outline-secondary" @click="toggleExpandMedellin">
+                  {{ isExpandedMedellin ? 'Contraer mapa' : 'Expandir mapa' }}
+                </button>
+              </div>
+              <div class="map-wrapper">
+                <l-map v-if="mapReadyMedellin" :zoom="zoomMedellin" :center="centerMedellin">
+                  <l-tile-layer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    layer-type="base"
+                    name="OpenStreetMap"
+                  ></l-tile-layer>
+                  
+                  <l-polygon 
+                    v-for="comuna in comunasMedellin"
+                    :key="comuna.nombre"
+                    :lat-lngs="comuna.coordenadas"
+                    :color="comuna.color"
+                    :fill-color="comuna.color"
+                    :fill-opacity="0.3"
+                    :weight="2"
+                  >
+                    <l-tooltip :options="{ permanent: true, direction: 'center' }" v-if="showPricesMedellin">
+                      <div>
+                        <strong>{{ comuna.nombre }}</strong><br>
+                        ${{ comuna.precioDomicilio.toLocaleString() }}
+                      </div>
+                    </l-tooltip>
+                  </l-polygon>
+                </l-map>
+              </div>
             </div>
-          </l-tooltip>
-        </l-polygon>
-      </l-map>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 mb-4">
+        <div class="card">
+          <div class="card-header bg-success text-white">
+            <h5 class="mb-0">Envíos Montería y sus alrededores</h5>
+          </div>
+          <div class="card-body">
+            <div class="map-container" :class="{ 'expanded': isExpandedMonteria }">
+              <div class="map-controls mb-2">
+                <button class="btn btn-sm btn-outline-success mr-2" @click="togglePricesMonteria">
+                  {{ showPricesMonteria ? 'Ocultar precios' : 'Mostrar precios' }}
+                </button>
+                <button class="btn btn-sm btn-outline-secondary" @click="toggleExpandMonteria">
+                  {{ isExpandedMonteria ? 'Contraer mapa' : 'Expandir mapa' }}
+                </button>
+              </div>
+              <div class="map-wrapper">
+                <l-map v-if="mapReadyMonteria" :zoom="zoomMonteria" :center="centerMonteria">
+                  <l-tile-layer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    layer-type="base"
+                    name="OpenStreetMap"
+                  ></l-tile-layer>
+                  
+                  <l-polygon
+                    v-for="comuna in comunasMonteria"
+                    :key="comuna.nombre"
+                    :lat-lngs="comuna.coordenadas"
+                    :color="comuna.color"
+                  >
+                    <l-tooltip v-if="showPricesMonteria" :content="'$' + comuna.precioDomicilio.toLocaleString()" :options="{ permanent: true, direction: 'center' }"/>
+                  </l-polygon>
+                </l-map>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -638,22 +886,16 @@ const toggleExpand = () => {
 <style scoped>
 .map-container {
   position: relative;
-  height: 500px;
-  width: 100%;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
+  height: 400px;
+  transition: height 0.3s ease;
 }
 
 .map-container.expanded {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 9999;
-  border-radius: 0;
+  height: 600px;
+}
+
+.map-wrapper {
+  height: 100%;
 }
 
 .map-controls {
@@ -661,6 +903,10 @@ const toggleExpand = () => {
   top: 10px;
   right: 10px;
   z-index: 1000;
+}
+
+.btn {
+  margin-right: 5px;
 }
 
 .map-controls button {
