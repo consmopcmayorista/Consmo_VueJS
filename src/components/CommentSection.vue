@@ -1,9 +1,7 @@
 <template>
-    <!-- Banner -->
-    <div class="banner">
+  <!-- Banner -->
+  <div class="banner">
     <img src="/images2/banner_calificanos.png" alt="Encuéntranos Banner" class="banner-image">
-    <div class="banner-content">
-    </div>
   </div>
   <div class="rating-page section_padding_b">
     <div class="container">
@@ -85,15 +83,13 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import axios from "axios";
 
 export default {
   components: { Swiper, SwiperSlide },
   data() {
     return {
-      comments: [
-        { id: 1, user: "Juan Pérez", text: "Excelente servicio.", date: new Date(), rating: 5 },
-        { id: 2, user: "María García", text: "Muy bueno.", date: new Date(), rating: 4 },
-      ],
+      comments: [],
       newComment: {
         user: "",
         text: "",
@@ -102,19 +98,37 @@ export default {
       hoverRating: 0,
     };
   },
+  mounted() {
+    // Cargar los comentarios desde la API
+    this.fetchComments();
+  },
   methods: {
-    addComment() {
+    async fetchComments() {
+      try {
+        const response = await axios.get("http://localhost:3000/comments");
+        this.comments = response.data;
+      } catch (error) {
+        console.error("Error al cargar los comentarios:", error);
+      }
+    },
+    async addComment() {
       if (this.newComment.rating === 0) {
         alert("Por favor selecciona una calificación.");
         return;
       }
       const newEntry = {
         ...this.newComment,
-        id: this.comments.length + 1,
         date: new Date(),
       };
-      this.comments.push(newEntry);
-      this.newComment = { user: "", text: "", rating: 0 };
+
+      try {
+        // Enviar el nuevo comentario a la API
+        const response = await axios.post("http://localhost:3000/comments", newEntry);
+        this.comments.push(response.data); // Agregar el comentario a la lista
+        this.newComment = { user: "", text: "", rating: 0 }; // Limpiar el formulario
+      } catch (error) {
+        console.error("Error al agregar el comentario:", error);
+      }
     },
     setRating(star) {
       this.newComment.rating = star;
@@ -176,7 +190,7 @@ export default {
   display: block;
   width: 100%;
   padding: 12px;
-  background-color: #9b00fe;
+  background-color: #007bff;
   color: #fff;
   font-size: 1rem;
   border: none;

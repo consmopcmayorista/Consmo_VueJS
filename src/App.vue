@@ -4,6 +4,8 @@ import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import WelcomeItem from './components/WelcomeItem.vue'
 import FooterInteractivo from "./components/footer.vue"
+import RedesComp from './components/RedesComp.vue'
+
 
 const toggleButton = ref(null)
 const whatsappButtons = ref(null)
@@ -324,22 +326,15 @@ onMounted(() => {
 
   <RouterView />
 
-  <div class="containerx">
-    <!-- Botón para mostrar u ocultar los botones de WhatsApp con el logo de WhatsApp -->
-    <button id="toggle-whatsapp-btn" class="show-whatsapp-btn">
-        <i class="fab fa-whatsapp"></i> <!-- Ícono de WhatsApp -->
-    </button>
-
-    <!-- Contenedor de los botones de WhatsApp, inicialmente oculto -->
-    <div class="redes" id="whatsapp-buttons" style="display: none;">
-        <div>
-            <a href="https://api.whatsapp.com/send?phone=573015556003&amptext=Hola, Saludos... Le escribo para Obtener Informacion." 
-               title="Asesor Web" 
-               class="lab la-whatsapp"> ASESOR WEB</a>
-        </div>
-    </div>
+  <div class="whatsapp-button">
+  <a href="https://wa.me/573016148080?text=Vengo%20desde%20la%20pagina%20web%20y%20quiero%20consultar%20sobre%20algo" target="_blank" rel="noopener noreferrer" class="whatsapp-link">
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-text">Chatea con nosotros</span>
+  </a>
 </div>
 
+
+<RedesComp />
 <!--
   <section id="blockSocialNetworksFixed" class="social-networks-fixed">
     <div id="containerSocialNetworksFixed" class="overflow-hidden">
@@ -373,4 +368,93 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.whatsapp-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+}
+
+.whatsapp-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+}
+
+.whatsapp-link:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.whatsapp-text {
+  position: absolute;
+  right: 70px;
+  background-color: #075E54;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+.whatsapp-link:hover .whatsapp-text {
+  opacity: 1;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+/* Efecto de ondas */
+.whatsapp-link::before,
+.whatsapp-link::after {
+  content: '';
+  position: absolute;
+  border: 3px solid #25D366;
+  left: -20px;
+  right: -20px;
+  top: -20px;
+  bottom: -20px;
+  border-radius: 50%;
+  animation: waves 2.5s linear infinite;
+  opacity: 0;
+}
+
+.whatsapp-link::after {
+  animation-delay: 1.25s;
+}
+
+@keyframes waves {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
 </style>

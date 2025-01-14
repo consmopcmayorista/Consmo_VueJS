@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from '@/components/HelloWorld.vue';
+import services from '@/components/services.vue';
 
 $(document).ready(function(){
     $(".owl-carousel").owlCarousel({
@@ -61,6 +62,7 @@ if (paginationBullet) {
           </a> -->
         </div>
       </div>
+      <services />
               <!-- categories -->
               <div class="shop_bycat section_padding_b">
             <div class="container">
@@ -204,57 +206,6 @@ if (paginationBullet) {
             </div>
         </div>
     </div>
-
-
-
-    
-    <section class="features_area  section_padding">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-10">
-                    <div class="row justify-content-center gx-2 gx-md-4">
-                        <div class="col-sm-4 mb-3 mb-sm-0">
-                            <div
-                                class="single_feature d-flex flex-column flex-sm-row align-items-center justify-content-center">
-                                <div class="feature_icon">
-                                    <img loading="lazy8"  src="/assets/images/svg/delivery-car.svg" alt="icon">
-                                  
-                                </div>
-                                <div class="feature_content">
-                                    <h4>Domicilio Gratis Medellín</h4>
-                                    <p>Compras Mayor a $400.000</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4 mb-3 mb-sm-0">
-                            <div
-                                class="single_feature d-flex flex-column flex-sm-row align-items-center justify-content-center">
-                                <div class="feature_icon">
-                                    <img  loading="lazy8"  src="/assets/images/svg/shopping2.svg" alt="icon">
-                                </div>
-                                <div class="feature_content">
-                                    <h4>5 Meses de Garantia</h4>
-                                    <p>En Productos Consmo</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div
-                                class="single_feature d-flex flex-column flex-sm-row align-items-center justify-content-center">
-                                <div class="feature_icon">
-                                    <img loading="lazy8"  src="/assets/images/candado.gif" alt="icon">
-                                </div>
-                                <div class="feature_content">
-                                    <h4>Compras Seguras</h4>
-                                    <p>Con <a href="https://www.mercadopago.com.co/ayuda/compra-protegida_601">Mercadopago</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
       
 
     <!-- hero area -->
