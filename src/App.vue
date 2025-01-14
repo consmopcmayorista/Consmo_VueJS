@@ -340,14 +340,14 @@ onMounted(() => {
     </div>
 </div>
 
-
+<!--
   <section id="blockSocialNetworksFixed" class="social-networks-fixed">
     <div id="containerSocialNetworksFixed" class="overflow-hidden">
         <div class="row justify-content-center align-items-center">
             <div class="col-12">
                 <div id="componentSocialNetworksFixed" class="order-1">
                     <div id="blockSocialNetworkFixed" class="d-inline-block social-static position-relative">
-                        <!-- Redes sociales con iconos de Font Awesome -->
+
                         <a href="https://www.facebook.com/consmopcmedellin" target="_blank" aria-label="Facebook">
                             <i class="fab fa-facebook fa-lg"></i>
                         </a>
@@ -365,7 +365,7 @@ onMounted(() => {
             </div>
         </div>
     </div>
-</section>
+</section>-->
 
         <!-- footer area -->
         <FooterInteractivo />

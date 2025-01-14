@@ -176,7 +176,7 @@ export default {
   display: block;
   width: 100%;
   padding: 12px;
-  background-color: #007bff;
+  background-color: #9b00fe;
   color: #fff;
   font-size: 1rem;
   border: none;
@@ -209,7 +209,7 @@ export default {
 }
 
 .star-rating .star.filled {
-  color: #ffc107;
+  color: #003cff;
 }
 
 .comment-card {
