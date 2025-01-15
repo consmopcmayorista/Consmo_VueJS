@@ -3,6 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from '@/components/HelloWorld.vue';
 import services from '@/components/services.vue';
 
+
 $(document).ready(function(){
     $(".owl-carousel").owlCarousel({
         items: 1, // Número de elementos por vista
@@ -44,6 +45,7 @@ if (paginationBullet) {
 </script>
 
 <template>
+        <Preloader :isLoading="isLoading" />
      <div class="banner_slider">
         <div class="owl-carousel owl-theme">
           <!-- Primer Banner -->

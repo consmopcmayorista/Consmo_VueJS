@@ -412,6 +412,25 @@ onMounted(() => {
 .whatsapp-link:hover .whatsapp-text {
   opacity: 1;
 }
+/* Estilos específicos para dispositivos móviles */
+@media (max-width: 768px) {
+  .whatsapp-button {
+    bottom: 70px; /* Ajusta esta valor para mover el botón más arriba */
+    right: 10px;
+  }
+
+  .whatsapp-link {
+    padding: 8px 12px; /* Reduce el padding para hacer el botón más pequeño */
+  }
+
+  .whatsapp-link i {
+    font-size: 20px; /* Reduce el tamaño del icono */
+  }
+
+  .whatsapp-text {
+    font-size: 12px; /* Reduce el tamaño del texto */
+  }
+}
 
 @keyframes pulse {
   0% {

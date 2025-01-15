@@ -207,7 +207,7 @@
 @media screen and (max-width: 768px) {
   .social-links-wrapper {
     top: auto;
-    bottom: 140px; /* Ajustado para que esté más arriba */
+    bottom: 190px; /* Ajustado para que esté más arriba */
     right: 0px; /* Ajustado para que esté más a la derecha */
     transform: none;
   }
