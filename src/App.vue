@@ -5,6 +5,7 @@ import HelloWorld from './components/HelloWorld.vue'
 import WelcomeItem from './components/WelcomeItem.vue'
 import FooterInteractivo from "./components/footer.vue"
 import RedesComp from './components/RedesComp.vue'
+import TopHeader from './components/TopHeader.vue'
 
 
 const toggleButton = ref(null)
@@ -28,6 +29,9 @@ onMounted(() => {
 
 
 <template>
+    <div class="anuncio">
+        <TopHeader />
+    </div>
     <header>
         <div class="container">
             <div class="d-flex align-items-center justify-content-sm-between">
@@ -476,4 +480,22 @@ onMounted(() => {
     opacity: 0;
   }
 }
+/* Estilo para el anuncio */
+.anuncio {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+  background-color: #f5f5f5; /* Color de fondo del anuncio */
+  padding: 10px 0;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Ajuste para el header */
+header {
+  margin-top: 50px; /* Ajusta este valor según la altura del anuncio */
+}
+
+
 </style>

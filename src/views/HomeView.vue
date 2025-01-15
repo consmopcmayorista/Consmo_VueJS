@@ -45,7 +45,6 @@ if (paginationBullet) {
 </script>
 
 <template>
-        <Preloader :isLoading="isLoading" />
      <div class="banner_slider">
         <div class="owl-carousel owl-theme">
           <!-- Primer Banner -->
