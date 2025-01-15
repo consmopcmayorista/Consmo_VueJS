@@ -55,8 +55,12 @@ const router = createRouter({
         name: 'calificanos',
           component: () => import('../views/Rating.vue'),
           props: true,  // allows passing props to the component
-          
-        }
+        },
+        {
+        path: '/producto',
+        name: 'producto',
+        component: () => import('../views/ProductView.vue'),
+    },
   ],
 })
 
