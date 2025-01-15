@@ -7,7 +7,7 @@
               <span></span>
               <span></span>
               <span></span>
-              <a href="https://facebook.com" target="_blank">
+              <a href="https://www.facebook.com/consmopcmedellin" target="_blank">
                 <svg
                   viewBox="0 0 320 512"
                   xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,7 @@
               <span></span>
               <span></span>
               <span></span>
-              <a href="https://instagram.com" target="_blank">
+              <a href="https://www.instagram.com/consmopcmayorista/" target="_blank">
                 <svg
                   class="svg"
                   xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +41,7 @@
                 <span></span>
                 <span></span>
                 <span></span>
-                <a href="https://tiktok.com" target="_blank">
+                <a href="https://www.tiktok.com/@consmopcmayorista" target="_blank">
                     <img 
                     src="/images2/tiktok.svg" 
                     alt="TikTok" 

@@ -9,21 +9,21 @@
         <div class="footer-col">
           <h4>Enlaces útiles</h4>
           <ul>
-            <li><a href="#">Preguntas frecuentes</a></li>
-            <li><a href="#">Política de privacidad</a></li>
-            <li><a href="#">Términos y condiciones</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><a href="/catalogo">Nuestro Catalogo</a></li>
+            <li><a href="/calificanos">Calificanos</a></li>
+            <li><a href="/encuentranos">Encuentranos</a></li>
+            <li><a href="/conocenos">Sobre Nosotros</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Síguenos</h4>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          </div>
-        </div>
+      <h4>Síguenos</h4>
+      <div class="social-links">
+        <a href="https://www.facebook.com/consmopcmedellin"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/consmopcmayorista/"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@consmopcmayorista"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.youtube.com/@ConsmoPcMayorista"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
         <div class="footer-col">
           <h4>Newsletter</h4>
           <form class="newsletter-form">
@@ -215,6 +215,9 @@ export default {
   opacity: 0.2;
   bottom: 15px;
   animation: animateWave 3s linear infinite;
+}
+.footer-col p {
+  color: #ffffff;
 }
 
 #wave4 {
