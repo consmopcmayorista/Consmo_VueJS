@@ -1,5 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import HomeView from '../views/HomeView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,13 +15,13 @@ const router = createRouter({
       component: () => import('../views/ShopList.vue'),
     },
     {
-    path: '/carrito',
-    name: 'carrito',
+      path: '/carrito',
+      name: 'carrito',
       component: () => import('../views/CartView.vue'),
     },
     {
-    path: '/confirmacion',
-    name: 'confirmacion',
+      path: '/confirmacion',
+      name: 'confirmacion',
       component: () => import('../views/OrderConfirmationView.vue'),
     },
     {
@@ -32,33 +32,42 @@ const router = createRouter({
     {
       path: '/conocenos',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue'),
     },
     {
       path: '/envios',
       name: 'envios',
-        component: () => import('../views/Envios.vue'),
-      },
-      {
-        path: '/encuentranos',
-        name: 'encuentranos',
-          component: () => import('../views/Encuentranos.vue'),
-        },
-        {
-        path: '/calificanos',
-        name: 'calificanos',
-          component: () => import('../views/Rating.vue'),
-          props: true,  // allows passing props to the component
-        },
-        {
-        path: '/producto',
-        name: 'producto',
-        component: () => import('../views/ProductView.vue'),
+      component: () => import('../views/Envios.vue'),
+    },
+    {
+      path: '/encuentranos',
+      name: 'encuentranos',
+      component: () => import('../views/Encuentranos.vue'),
+    },
+    {
+      path: '/calificanos',
+      name: 'calificanos',
+      component: () => import('../views/Rating.vue'),
+      props: true,
+    },
+    {
+      path: '/producto',
+      name: 'producto',
+      component: () => import('../views/ProductView.vue'),
+    },
+    // Rutas del foro
+    {
+      path: '/foro',
+      name: 'foro',
+      component: () => import('../views/Foro.vue'), // Vista para la lista del foro
+    },
+    {
+      path: '/foro/:id',
+      name: 'publicacion',
+      component: () => import('../components/Publicacion.vue'), // Vista para el detalle de la publicación
+      props: true, // Permite pasar el parámetro `id` como propiedad al componente
     },
   ],
-})
+});
 
-export default router
+export default router;
