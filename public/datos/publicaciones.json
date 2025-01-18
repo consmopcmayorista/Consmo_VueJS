@@ -153,11 +153,11 @@
       },
       {
         "type": "text",
-        "value": "### Factores a considerar"
+        "value": "## Factores a considerar"
       },
       {
         "type": "text",
-        "value": "#### 1. Potencia requerida"
+        "value": "### 1. Potencia requerida"
       },
       {
         "type": "text",
@@ -170,7 +170,7 @@
       },
       {
         "type": "text",
-        "value": "#### 2. Eficiencia energética"
+        "value": "### 2. Eficiencia energética"
       },
       {
         "type": "text",
@@ -183,7 +183,7 @@
       },
       {
         "type": "text",
-        "value": "#### 3. Conectores y compatibilidad"
+        "value": "### 3. Conectores y compatibilidad"
       },
       {
         "type": "text",
@@ -203,7 +203,7 @@
       },
       {
         "type": "text",
-        "value": "##### Conectores PCIe"
+        "value": "### Conectores PCIe"
       },
       {
         "type": "text",
@@ -211,7 +211,7 @@
       },
       {
         "type": "text",
-        "value": "##### Conectores SATA y Molex"
+        "value": "### Conectores SATA y Molex"
       },
       {
         "type": "text",
@@ -219,7 +219,7 @@
       },
       {
         "type": "text",
-        "value": "##### Conectores de 24 pines"
+        "value": "### Conectores de 24 pines"
       },
       {
         "type": "text",
@@ -227,7 +227,7 @@
       },
       {
         "type": "text",
-        "value": "### Herramientas recomendadas"
+        "value": "## Herramientas recomendadas"
       },
       {
         "type": "file",
